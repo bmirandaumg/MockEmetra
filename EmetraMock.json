@@ -1,0 +1,130 @@
+{
+  "uuid": "1c8ae03c-0732-43bd-9bb1-8cc51e9f2bd1",
+  "lastMigration": 33,
+  "name": "Sin título",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "8739869c-96cb-4a9a-807e-28caa866ed2d",
+      "type": "http",
+      "documentation": "Respuesta mockeada de sat para emetra remisiones",
+      "method": "get",
+      "endpoint": "sat-license-plate/:plate",
+      "responses": [
+        {
+          "uuid": "b8aaf990-76ec-4104-86d7-2d4740582248",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\">\n  <soap:Body>\n    <soap:Fault>\n      <soap:Code>\n        <soap:Value>soap:Sender</soap:Value>\n      </soap:Code>\n      <soap:Reason>\n        <soap:Text xml:lang=\"es\">Placa {{urlParam 'plate'}} no encontrada</soap:Text>\n      </soap:Reason>\n    </soap:Fault>\n  </soap:Body>\n</soap:Envelope>",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "4b16908f-0715-4cde-ae18-5072f365222e",
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\"\n               xmlns:sat=\"http://example.com/sat\">\n  <soap:Body>\n    <sat:GetLicensePlateResponse>\n      <sat:Placa>{{urlParam 'plate'}}</sat:Placa>\n      <sat:TipoVehiculo>AUTOMOVIL</sat:TipoVehiculo>\n      <sat:Uso>PARTICULAR</sat:Uso>\n      <sat:Marca>MAZDA</sat:Marca>\n      <sat:Linea>323 HATCHBACK</sat:Linea>\n      <sat:Color>VERDE ORIENTAL</sat:Color>\n      <sat:Modelo>1992</sat:Modelo>\n      <sat:Chasis>BG1062-102582</sat:Chasis>\n      <sat:Motor>B6-460090</sat:Motor>\n      <sat:Propietario>RAMIREZ,OXCAL,,JORGE,ANTONIO</sat:Propietario>\n      <sat:Direccion>17 AVENIDA 16-03 SAN IGNACIO ZONA 7</sat:Direccion>\n      <sat:Departamento>GUATEMALA</sat:Departamento>\n      <sat:Municipio>Mixco</sat:Municipio>\n    </sat:GetLicensePlateResponse>\n  </soap:Body>\n</soap:Envelope>",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type: application/soap+xml",
+              "value": "charset=utf-8"
+            },
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "plate",
+              "value": "P0917BMH",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "8739869c-96cb-4a9a-807e-28caa866ed2d"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}
