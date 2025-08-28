@@ -9,19 +9,24 @@
   "folders": [],
   "routes": [
     {
-      "uuid": "8739869c-96cb-4a9a-807e-28caa866ed2d",
+      "uuid": "2ef3ceb6-40c3-4077-9da4-603f6f1604d2",
       "type": "http",
-      "documentation": "Respuesta mockeada de sat para emetra remisiones",
-      "method": "get",
-      "endpoint": "sat-license-plate/:plate",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "speed-events",
       "responses": [
         {
-          "uuid": "b8aaf990-76ec-4104-86d7-2d4740582248",
-          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\">\n  <soap:Body>\n    <soap:Fault>\n      <soap:Code>\n        <soap:Value>soap:Sender</soap:Value>\n      </soap:Code>\n      <soap:Reason>\n        <soap:Text xml:lang=\"es\">Placa {{urlParam 'plate'}} no encontrada</soap:Text>\n      </soap:Reason>\n    </soap:Fault>\n  </soap:Body>\n</soap:Envelope>",
+          "uuid": "cae43e07-5d56-48ab-b3a4-84aa461e4165",
+          "body": "{\n  \"status\": \"processed\",\n  \"message\": \"event queued\"\n}",
           "latency": 0,
-          "statusCode": 404,
+          "statusCode": 200,
           "label": "",
-          "headers": [],
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            }
+          ],
           "bodyType": "INLINE",
           "filePath": "",
           "databucketID": "",
@@ -31,42 +36,6 @@
           "disableTemplating": false,
           "fallbackTo404": false,
           "default": true,
-          "crudKey": "id",
-          "callbacks": []
-        },
-        {
-          "uuid": "4b16908f-0715-4cde-ae18-5072f365222e",
-          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\"\n               xmlns:sat=\"http://example.com/sat\">\n  <soap:Body>\n    <sat:GetLicensePlateResponse>\n      <sat:Placa>{{urlParam 'plate'}}</sat:Placa>\n      <sat:TipoVehiculo>AUTOMOVIL</sat:TipoVehiculo>\n      <sat:Uso>PARTICULAR</sat:Uso>\n      <sat:Marca>MAZDA</sat:Marca>\n      <sat:Linea>323 HATCHBACK</sat:Linea>\n      <sat:Color>VERDE ORIENTAL</sat:Color>\n      <sat:Modelo>1992</sat:Modelo>\n      <sat:Chasis>BG1062-102582</sat:Chasis>\n      <sat:Motor>B6-460090</sat:Motor>\n      <sat:Propietario>RAMIREZ,OXCAL,,JORGE,ANTONIO</sat:Propietario>\n      <sat:Direccion>17 AVENIDA 16-03 SAN IGNACIO ZONA 7</sat:Direccion>\n      <sat:Departamento>GUATEMALA</sat:Departamento>\n      <sat:Municipio>Mixco</sat:Municipio>\n    </sat:GetLicensePlateResponse>\n  </soap:Body>\n</soap:Envelope>",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "",
-          "headers": [
-            {
-              "key": "Content-Type: application/soap+xml",
-              "value": "charset=utf-8"
-            },
-            {
-              "key": "",
-              "value": ""
-            }
-          ],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "params",
-              "modifier": "plate",
-              "value": "P0917BMH",
-              "invert": false,
-              "operator": "equals"
-            }
-          ],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": false,
           "crudKey": "id",
           "callbacks": []
         }
@@ -79,7 +48,7 @@
   "rootChildren": [
     {
       "type": "route",
-      "uuid": "8739869c-96cb-4a9a-807e-28caa866ed2d"
+      "uuid": "2ef3ceb6-40c3-4077-9da4-603f6f1604d2"
     }
   ],
   "proxyMode": false,
